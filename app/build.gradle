@@ -1,0 +1,97 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.paypay.paypaytest"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    viewBinding{
+        enabled true
+    }
+
+    dataBinding{
+        enabled true
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    implementation project(':common')
+    implementation project(':network')
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+
+    androidTestImplementation 'androidx.test:core:1.5.0-rc01'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+    androidTestImplementation 'androidx.test:runner:1.5.0-rc01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-rc01'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
+    androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.2') {
+        // Necessary to avoid version conflicts
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.test:core:1.5.0-rc01'
+    testImplementation 'androidx.test.ext:junit:1.1.4'
+    testImplementation 'androidx.test:rules:1.4.0'
+    testImplementation 'androidx.test:runner:1.5.0-rc01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
+    testImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.7.2'
+    androidTestImplementation 'com.squareup.okhttp3:mockwebserver:4.7.2'
+    testImplementation "org.mockito:mockito-core:3.4.6"
+    androidTestImplementation "org.mockito:mockito-core:3.4.6"
+
+
+    //ROOM DB
+    implementation("androidx.room:room-ktx:2.4.3")
+    implementation("androidx.room:room-runtime:2.4.3")
+    annotationProcessor("androidx.room:room-compiler:2.4.3")
+    kapt("androidx.room:room-compiler:2.4.3")
+    implementation("androidx.work:work-runtime:2.7.1")
+
+    implementation allDependacies.coreKtx
+    implementation allDependacies.appcompat
+    implementation allDependacies.material
+    implementation allDependacies.constraintlayout
+    implementation allDependacies.livedataCore
+
+}

@@ -1,0 +1,34 @@
+ext {
+
+//Version
+
+    gsonVersion = '2.8.9'
+    coroutinesVersion = '1.6.4'
+    constraintlayoutVersion = '2.1.4'
+    appcompatVersion = '1.5.1'
+    materialVersion = '1.7.0'
+    coreKtxVersion = '1.7.0'
+    cardViewVersion = '1.0.0'
+    recyclerviewVersion = '1.2.1'
+    livedataCoreVersion = '2.5.1'
+
+
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+// Libraries dependencies
+    allDependacies = [
+            gson: "com.google.code.gson:gson:${gsonVersion}",
+            coroutinesCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}",
+            coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}",
+            appcompat: "androidx.appcompat:appcompat:${appcompatVersion}",
+            material: "com.google.android.material:material:${materialVersion}",
+            coreKtx : "androidx.core:core-ktx:${coreKtxVersion}",
+            core : "androidx.core:core:${coreKtxVersion}",
+            cardview : "androidx.cardview:cardview:${cardViewVersion}",
+            recyclerview : "androidx.recyclerview:recyclerview:${recyclerviewVersion}",
+            livedataCore : "androidx.lifecycle:lifecycle-livedata-core-ktx:${livedataCoreVersion}"
+    ]
+}

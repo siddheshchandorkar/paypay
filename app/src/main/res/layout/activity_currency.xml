@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.paypay.paypaytest.presentation.viewmodel.CurrencyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_amt_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/enter_amount"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:theme="@style/Theme.TextInputLayoutGreyStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_amt_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_amount"
+                style="@style/TextInputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789."
+                android:enabled="@{!vm.isLoading}"
+                android:gravity="end"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:maxLength="7"
+                android:maxLines="1"
+                android:text="@={vm.amount}"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_currency_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:enabled="@{!vm.isLoading}"
+            android:hint="@string/enter_country_currency_name"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_amount" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="16dp"
+            android:alpha="0.5"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/actv_currency_name" />
+
+        <TextView
+            android:id="@+id/tv_country"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/darker_gray"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/country_name"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_short_form"
+            app:layout_constraintEnd_toStartOf="@id/gl_one"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_short_form"
+            tools:text="Indian" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.40"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+        <TextView
+            android:id="@+id/tv_short_form"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/darker_gray"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/currency_name"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/gl_two"
+            app:layout_constraintStart_toEndOf="@id/gl_one"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.70"
+            app:layout_constraintTop_toBottomOf="@id/actv_currency_name" />
+
+
+        <TextView
+            android:id="@+id/_tvamount"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="1dp"
+            android:background="@android:color/darker_gray"
+            android:gravity="center_vertical|end"
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="5dp"
+            android:text="@string/amount"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_short_form"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_two"
+            app:layout_constraintTop_toTopOf="@+id/tv_short_form" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_converted_currencies"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_country"
+            app:setRowData="@{vm.listCurrencyLiveData}"
+            app:setVisibility="@{!vm.isLoading}" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_country"
+            app:setVisibility="@{vm.isLoading}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

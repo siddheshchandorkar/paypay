@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PayPay Test</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="country_name">Country Name</string>
+    <string name="currency_name">Currency Name</string>
+    <string name="amount">Amount</string>
+    <string name="enter_country_currency_name">Enter Country/Currency Name</string>
+    <string name="error_message">Please Enter Amount First</string>
+</resources>

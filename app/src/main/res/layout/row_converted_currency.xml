@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.paypay.paypaytest.presentation.viewmodel.RowViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cl_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:setBackground="@{vm.color}">
+
+        <TextView
+            android:id="@+id/tv_country"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:text="@{vm.name}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/gl_one"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Indian" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.40" />
+
+        <TextView
+            android:id="@+id/tv_short_form"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@{vm.shortForm}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/gl_two"
+            app:layout_constraintStart_toEndOf="@id/gl_one"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="INR" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.70" />
+
+
+        <TextView
+            android:id="@+id/_tvamount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            android:text="@{vm.amount}"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_two"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="20" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
